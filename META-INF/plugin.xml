@@ -1,0 +1,68 @@
+<idea-plugin version="2">
+  <id>net.leppik.intellij.plugin.justifier</id>
+  <name>Justifier</name>
+  <version>0.5</version>
+  <vendor email="david@leppik.net" url="https://github.com/dleppik">David Leppik</vendor>
+
+  <description><![CDATA[
+      Left or right justify columns of selected text.  This makes it easy to format repetitive lines of code into easy
+      to read tables.  <b>This only works when indenting with spaces, not tabs.</b>
+
+      <p>To use:</p>
+
+      <ol>
+        <li> Select a rectangular block of text (alt-click and drag)</li>
+        <li> Choose <b>Left Justify</b> under the <b>Edit</b> menu.  All the whitespace on the left is moved to the right.</li>
+        <li> Choose <b>Right Justify</b> under the <b>Edit</b> menu.  All the whitespace on the right is moved to the left.</li>
+      </ol>
+    ]]></description>
+
+  <change-notes><![CDATA[
+    ]]>
+  </change-notes>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="131"/>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <!-- uncommented to enable plugin in all products -->
+  <depends>com.intellij.modules.lang</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <application-components>
+    <!-- Add your application components here -->
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+
+    <group id="JustifyGroup" text="Justify">
+      <add-to-group group-id="EditMenu" anchor="last"/>
+      <!-- Opening EditorPopupMenu undoes the selection, at least on the Mac. -->
+      <!-- add-to-group group-id="EditorPopupMenu" anchor="last" -->
+
+      <separator/>
+      <action id="LeftJustify" class="net.leppik.intellij.plugin.justifier.LeftJustifyAction" text="Justify Left"
+              description="Format a block selection into a left-justified column">
+
+        <!-- On the Mac, this has no conflicts.  Can't find a similar open shortcut for $default. -->
+        <keyboard-shortcut first-keystroke="control OPEN_BRACKET" keymap="Mac OS X 10.5+"/>
+        <keyboard-shortcut first-keystroke="control OPEN_BRACKET" keymap="Mac OS X"/>
+      </action>
+      <action id="RightJustify" class="net.leppik.intellij.plugin.justifier.RightJustifyAction" text="Justify Right"
+              description="Format a block selection into a right-justified column">
+        <keyboard-shortcut first-keystroke="control CLOSE_BRACKET" keymap="Mac OS X 10.5+"/>
+        <keyboard-shortcut first-keystroke="control CLOSE_BRACKET" keymap="Mac OS X"/>
+      </action>
+    </group>
+  </actions>
+
+</idea-plugin>
