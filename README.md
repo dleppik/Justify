@@ -3,8 +3,7 @@ Justify
 
 IntelliJ Plug-in to format text.
 
- Left or right justify columns of selected text. This makes it easy to format repetitive lines of code into easy
-to read tables. *This only works when indenting with spaces, not tabs.*
+ Left or right justify columns of selected text. This makes it easy to format repetitive lines of code into easy-to-read tables. *This only works when indenting with spaces, not tabs.*
 
 To use:
 ------
